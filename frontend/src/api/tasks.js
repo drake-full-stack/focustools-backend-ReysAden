@@ -1,11 +1,10 @@
 // Base URL for all API calls - change this for deployment
-const API_URL = 'http://localhost:3001';
-
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 /**
  * Fetch all tasks from backend
  */
 export const getTasks = async () => {
-  const response = await fetch(`${API_URL}/api/tasks`);
+  const response = await fetch(`${API_BASE_URL}/api/tasks`);
   if (!response.ok) {
     throw new Error('Failed to fetch tasks');
   }
@@ -17,7 +16,7 @@ export const getTasks = async () => {
  * @param {Object} taskData - { title: string }
  */
 export const createTask = async (taskData) => {
-  const response = await fetch(`${API_URL}/api/tasks`, {
+  const response = await fetch(`${API_BASE_URL}/api/tasks`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -36,7 +35,7 @@ export const createTask = async (taskData) => {
  * @param {Object} updates - Fields to update
  */
 export const updateTask = async (id, updates) => {
-  const response = await fetch(`${API_URL}/api/tasks/${id}`, {
+  const response = await fetch(`${API_BASE_URL}/api/tasks/${id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -54,7 +53,7 @@ export const updateTask = async (id, updates) => {
  * @param {string} id - Task ID
  */
 export const deleteTask = async (id) => {
-  const response = await fetch(`${API_URL}/api/tasks/${id}`, {
+  const response = await fetch(`${API_BASE_URL}/api/tasks/${id}`, {
     method: 'DELETE',
   });
   if (!response.ok) {

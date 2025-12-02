@@ -4,6 +4,8 @@ import TaskList from './components/TaskList';
 import PomodoroTimer from './components/PomodoroTimer';
 import { getTasks, createTask, updateTask, deleteTask } from './api/tasks';
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 function App() {
   // State management
   const [tasks, setTasks] = useState([]);
